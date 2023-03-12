@@ -15,9 +15,9 @@ jobs:
     - name: Build the Docker image
       run: cd auth && docker build -t tommy2804/auth .
     - name: Log In to docker hub
-      run: docker login u && $DOCKER_USERNAME $DOCKER_PASSWORD
       env: 
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: docker login u && $DOCKER_USERNAME $DOCKER_PASSWORD
     - run: docker push tommy2804/auth
     
