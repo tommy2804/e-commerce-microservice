@@ -17,7 +17,7 @@ const LandingPage = ({ currentUser, tickets }) => {
   console.log(currentUser, tickets);
   return (
     <div className="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
-      <h1 className="text-2xl font-bold text-gray-800 text-left mb-5">Tickets</h1>
+      <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">Tickets</h2>
       <table className="table-auto min-w-full text-left text-sm font-light">
         <thead className="border-b font-medium dark:border-neutral-500">
           <tr>
