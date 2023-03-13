@@ -7,7 +7,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 mongoose.set('strictQuery', false);
 
 const start = async () => {
-  console.log('starting...');
+  console.log('starting.....');
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
