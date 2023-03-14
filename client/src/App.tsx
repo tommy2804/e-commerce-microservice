@@ -6,13 +6,14 @@ import Home from './pages/Home';
 // import Product from './pages/Product/Product';
 // import Products from './pages/Products/Products';
 import './app.scss';
+import Signin from './components/Auth';
 
 const Layout = () => {
   return (
     <div className="app">
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: <Signin />,
       },
       // {
       //   path: '/products/:id',
