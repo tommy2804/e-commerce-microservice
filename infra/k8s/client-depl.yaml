@@ -14,14 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: tommy2804/react-client
-          env:
-            - name: STRIPE_PUBLISH_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: stripe-publish-key
-                  key: STRIPE_PUBLISH_KEY
-
+          image: tommy2804/client
 ---
 apiVersion: v1
 kind: Service
