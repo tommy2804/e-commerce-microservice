@@ -16,5 +16,5 @@ jobs:
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     - run: doctl kubernetes cluster kubeconfig  save 68baf42b-e60c-4906-8e8c-6dff8e33d703
-    - run: kubectl apply -f infra/k8s --timeout=30s && kubectl apply -f infra/k8s-prod
+    - run: kubectl apply -f infra/k8s && kubectl apply -f --timeout=30s infra/k8s-prod
     
