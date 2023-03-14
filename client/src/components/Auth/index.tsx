@@ -4,7 +4,8 @@ import facebook from '../../assets/images/facebook.svg';
 import google from '../../assets/images/google.svg';
 import linkedin from '../../assets/images/linkedin.svg';
 import { useForm } from 'react-hook-form';
-import { Box } from '@mui/material';
+import useRequest from '../../hooks/use-request';
+import { RequestType } from '../../utils/types/request-type';
 
 type SignupData = {
   firstName: string;
@@ -18,12 +19,42 @@ type LoginData = {
 };
 
 const Auth = () => {
+
   const [isLogin, setLogin] = useState(true);
   const { register, handleSubmit } = useForm<SignupData>();
   const { register: login, handleSubmit: handleLogin } = useForm<LoginData>();
 
-  const signupSumbit = handleSubmit((data) => console.log(data));
-  const loginSubmit = handleLogin((data) => console.log(data));
+  const {
+    doRequest: signup,
+    errors,
+    loading,
+  } = useRequest({
+    url: '/api/users/signup',
+    method: RequestType.POST,
+    body: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+  const { doRequest: signin } = useRequest({
+    url: '/api/users/signin',
+    method: RequestType.POST,
+    body: {
+      email: '',
+      password: '',
+    },
+    onSuccess: (data) => {
+      console.log(data);
+    },
+  });
+
+  const signupSubmit = handleSubmit((data) => signup(data));
+  const loginSubmit = handleLogin((data) => signin(data));
 
   return (
     <div className="login">
@@ -79,7 +110,9 @@ const Auth = () => {
           or use email for your registration
         </span>
         <div className="login__create-container__form-container">
-          <form className="login__create-container__form-container__form" onSubmit={signupSumbit}>
+
+          <form className="login__create-container__form-container__form" onSubmit={signupSubmit}>
+
             <input
               {...register('firstName', { required: true })}
               className="login__create-container__form-container__form--name"
@@ -102,6 +135,11 @@ const Auth = () => {
               placeholder="Password"
               {...register('password', { required: true })}
             />
+
+            {errors && (
+              <div className="login__create-container__form-container__form--error">{errors}</div>
+            )}
+
             <button className="login__create-container__form-container__form--submit">
               Sign Up
             </button>
