@@ -17,13 +17,13 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: tommy2804/client
+    - image: tommy2804/react-client
       context: client
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.js'
+          - src: 'src/**/*.tsx'
             dest: .
     - image: tommy2804/tickets
       context: tickets

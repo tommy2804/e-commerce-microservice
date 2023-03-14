@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: tommy2804/client
+          image: tommy2804/react-client
           env:
             - name: STRIPE_PUBLISH_KEY
               valueFrom:
@@ -33,5 +33,5 @@ spec:
   ports:
     - name: client
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 80
+      targetPort: 80
