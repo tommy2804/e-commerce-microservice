@@ -7,6 +7,8 @@ it('returns a 201 on successful signup', async () => {
     .send({
       email: 'test@test.com',
       password: 'password',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(201);
 });
@@ -17,6 +19,8 @@ it('return a 400 with invalid email', async () => {
     .send({
       email: 'dsfadsfa',
       password: 'password',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(400);
 });
@@ -27,6 +31,8 @@ it('return a 400 with invalid password', async () => {
     .send({
       email: 'dsfadsfa',
       password: 'p',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(400);
 });
@@ -52,6 +58,8 @@ it('disallows duplicate emails', async () => {
     .send({
       email: 'test@test.com',
       password: 'password',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(201);
   await request(app)
@@ -59,6 +67,8 @@ it('disallows duplicate emails', async () => {
     .send({
       email: 'test@test.com',
       password: 'password',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(400);
 });
@@ -68,6 +78,8 @@ it('sets a cookie after succeful signup', async () => {
     .send({
       email: 'test@test.com',
       password: 'password',
+      firstName: 'test',
+      lastName: 'test',
     })
     .expect(201);
   expect(res.get('Set-Cookie')).toBeDefined();
