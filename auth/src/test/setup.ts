@@ -13,7 +13,7 @@ global.signin = async () => {
 
   const response = await request(app)
     .post('/api/users/signup')
-    .send({ email, password })
+    .send({ email, password, firstName: 'test', lastName: 'test' })
     .expect(201);
   const cookie = response.get('Set-Cookie');
 
