@@ -19,7 +19,6 @@ type LoginData = {
 };
 
 const Auth = () => {
-  console.log('fd');
 
   const [isLogin, setLogin] = useState(true);
   const { register, handleSubmit } = useForm<SignupData>();
@@ -111,7 +110,9 @@ const Auth = () => {
           or use email for your registration
         </span>
         <div className="login__create-container__form-container">
+
           <form className="login__create-container__form-container__form" onSubmit={signupSubmit}>
+
             <input
               {...register('firstName', { required: true })}
               className="login__create-container__form-container__form--name"
@@ -134,9 +135,11 @@ const Auth = () => {
               placeholder="Password"
               {...register('password', { required: true })}
             />
+
             {errors && (
               <div className="login__create-container__form-container__form--error">{errors}</div>
             )}
+
             <button className="login__create-container__form-container__form--submit">
               Sign Up
             </button>

@@ -1,7 +1,9 @@
 import React from 'react';
 import Card from '../Card';
 import './FeaturedProducts.scss';
+
 import useFetch from '../../hooks/use-fetch';
+
 import { CartState } from '../../redux/types/cart';
 import { ProductType } from '../../utils/types/product-type';
 
